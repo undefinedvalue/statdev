@@ -115,7 +115,7 @@ class FilewatchHandler(PatternMatchingEventHandler):
       print 'Detected change in', event.src_path
       self.last_event_time = datetime.now()
 
-      self.stop_server()
+      self.parent.stop_server()
       self.parent.rebuild()
-      self.start_server()
+      self.parent.start_server()
 
