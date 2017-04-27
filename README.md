@@ -19,7 +19,7 @@ StatDev is licensed under the [MIT License](https://opensource.org/licenses/MIT)
 The primary build tool is found in [dev/build.py](dev/build.py).
 
 ```bash
-./statdev/dev/build.py -h
+./statdev/build.py -h
 ```
 
 ### Build
@@ -33,13 +33,13 @@ Scripts are run in alphabetical order of file name, which is why they are
 prefixed with numbers. Lower numbers run first.
 
 ```bash
-./statdev/dev/build.py build
+./statdev/build.py build
 ```
 
 Sometimes it is useful to skip certain steps of the build:
 
 ```bash
-./statdev/dev/build.py build --skip s3_upload
+./statdev/build.py build --skip s3_upload
 ```
 
 ### Development Server
@@ -54,7 +54,7 @@ development server, the website will automatically reload with the newly built
 version whenever source files are edited.
 
 ```bash
-./statdev/dev/build.py server
+./statdev/build.py server
 ```
 
 Sometimes it is useful to disable the auto-reload javascript. To do so, add a
