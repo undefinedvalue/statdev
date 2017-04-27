@@ -114,5 +114,8 @@ class FilewatchHandler(PatternMatchingEventHandler):
     if not event.is_directory and dt.total_seconds() > 1:
       print 'Detected change in', event.src_path
       self.last_event_time = datetime.now()
+
+      self.stop_server()
       self.parent.rebuild()
+      self.start_server()
 
