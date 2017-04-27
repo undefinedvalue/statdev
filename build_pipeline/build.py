@@ -12,7 +12,8 @@ def build(src_dir, dst_dir, skip=[], opts={}, **kwargs):
   build_module_name = os.path.basename(build_script_dir)
 
   # Clean out the build dir
-  shutil.rmtree(dst_dir)
+  if os.path.isdir(dst_dir):
+    shutil.rmtree(dst_dir)
   os.mkdir(dst_dir)
 
   # Import each file, sorted by name, except for the current script
