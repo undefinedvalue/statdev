@@ -43,6 +43,7 @@ class Server:
 
     (lastmtime, path) = self.getUpdatedFile(0)
     self.rebuild()
+    self.start_server()
 
     while self.watch:
       (lastmtime, path) = self.getUpdatedFile(lastmtime)
