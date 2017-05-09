@@ -47,13 +47,5 @@ def build(src_dir, dst_dir, opts):
     if not exists or obj.metadata.get('hash') != local_hash:
       print "{} differs, uploading".format(src_path)
       (mime, _) = mimetypes.guess_type(src_path)
-
-      metadata = {'hash': local_hash}
-
-      # Force cache revalidation for index.html so website updates are seen
-      # immediately by the client.
-      if os.path.basename(src_path) == 'index.html':
-        metadata['Cache-Control'] = 'public, must-revalidate, proxy-revalidate, max-age=0'
-
-      obj.upload_file(src_path, ExtraArgs={'ContentType': mime, 'Metadata': metadata})
+      obj.upload_file(src_path, ExtraArgs={'ContentType': mime, 'Metadata': {'hash': local_hash}})
 
