@@ -11,6 +11,8 @@ def build(src_dir, dst_dir, skip=[], opts={}, **kwargs):
   build_script_dir = os.path.dirname(os.path.abspath(__file__))
   build_module_name = os.path.basename(build_script_dir)
 
+  opts.update(kwargs)
+
   # Clean out the build dir
   if os.path.isdir(dst_dir):
     shutil.rmtree(dst_dir)

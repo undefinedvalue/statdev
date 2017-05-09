@@ -30,6 +30,10 @@ build_parser.set_defaults(do_action=build)
 build_parser.add_argument('--skip', action='append', default=[],
         help='Skips a step in the pipeline. e.g. --skip s3_upload')
 
+build_parser.add_argument('--img-subdomain',
+        help='Prefixes src attributes for images with given subdomain.')
+
+
 # server
 server_parser = subparsers.add_parser('server', help='Start a development server')
 server_parser.set_defaults(do_action=server)
