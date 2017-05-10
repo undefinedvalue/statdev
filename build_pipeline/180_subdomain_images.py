@@ -17,12 +17,13 @@ def build(src_dir, dst_dir, opts):
   img_paths = [p for p in sd.filepaths() if futil.ext(p) in ['.jpg', '.png']]
 
   for (src_path, dst_path) in futil.pairwalk(src_dir, dst_dir):
+    futil.try_mkdirs(os.path.dirname(dst_path))
+
     if futil.ext(src_path) == '.html':
       # Replace paths in html files
       sd.replace(src_path, dst_path, img_paths, img_subdomain)
     else:
       # Copy non-html files over
-      futil.try_mkdirs(os.path.dirname(dst_path))
       shutil.copy2(src_path, dst_path)
 
 class Subdomainer:
