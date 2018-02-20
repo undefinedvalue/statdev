@@ -70,12 +70,13 @@ class Server:
 
     return (lastmtime, updatedPath)
 
-  # Rebuilds the project, as if by "build.py build --skip s3_upload"
+  # Rebuilds the project, as if by "build.py build --skip s3_upload --skip invalidate_cdn"
   def rebuild(self):
     try:
       print 'Building', self.src_dir
       os.chdir(self.src_dir)
-      build_pipeline.build.build(self.src_dir, self.dst_dir, skip=['s3_upload'],
+      build_pipeline.build.build(self.src_dir, self.dst_dir,
+          skip=['s3_upload', 'invalidate_cdn'],
           opts={'environment': 'development'})
 
       # Copy the refresh.js file last, since that will indicate that the
